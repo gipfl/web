@@ -2,12 +2,12 @@
 
 namespace gipfl\Web\Form\Validator;
 
-use ipl\Stdlib\Contract\ValidatorInterface;
-use ipl\Stdlib\MessageContainer;
+use ipl\Stdlib\Contract\Validator;
+use ipl\Stdlib\Messages;
 
-abstract class SimpleValidator implements ValidatorInterface
+abstract class SimpleValidator implements Validator
 {
-    use MessageContainer;
+    use Messages;
 
     protected $settings = [];
 
