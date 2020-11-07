@@ -2,6 +2,7 @@
 
 namespace gipfl\Web\Table;
 
+use ipl\Html\BaseHtmlElement;
 use ipl\Html\Table;
 
 class NameValueTable extends Table
@@ -18,7 +19,7 @@ class NameValueTable extends Table
 
     public function createNameValueRow($name, $value)
     {
-        return $this::tr([$this::th($name), $this::td($value)]);
+        return $this::tr([$this::th($name), $this::wantTd($value)]);
     }
 
     public function addNameValueRow($name, $value)
@@ -33,5 +34,14 @@ class NameValueTable extends Table
         }
 
         return $this;
+    }
+
+    protected function wantTd($value)
+    {
+        if ($value instanceof BaseHtmlElement && $value->getTag() === 'td') {
+            return $value;
+        } else {
+            return $this::td($value);
+        }
     }
 }
