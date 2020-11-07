@@ -8,6 +8,14 @@ class NameValueTable extends Table
 {
     protected $defaultAttributes = ['class' => 'gipfl-name-value-table'];
 
+    public static function create($pairs = [])
+    {
+        $self = new static;
+        $self->addNameValuePairs($pairs);
+
+        return $self;
+    }
+
     public function createNameValueRow($name, $value)
     {
         return $this::tr([$this::th($name), $this::td($value)]);
