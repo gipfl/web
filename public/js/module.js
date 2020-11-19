@@ -58,5 +58,5 @@
         }
     };
 
-    w.incubator.addComponent(new Web());
+    window.incubatorComponentLoader.addComponent(new Web());
 })(window, jQuery);
