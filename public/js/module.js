@@ -7,7 +7,7 @@
     Web.prototype = {
         initialize: function (icinga) {
             this.icinga = icinga;
-            $(document).on('focus', 'form input, form textarea, form select', this.formElementFocus);
+            $(document).on('focus', 'form.gipfl-form input, form.gipfl-form textarea, form.gipfl-form select', this.formElementFocus);
         },
 
         formElementFocus: function (ev) {
