@@ -8,6 +8,13 @@
         initialize: function (icinga) {
             this.icinga = icinga;
             $(document).on('focus', 'form.gipfl-form input, form.gipfl-form textarea, form.gipfl-form select', this.formElementFocus);
+            $(document).on('click', '.gipfl-collapsible-control', this.toggleCollapsible);
+        },
+
+        toggleCollapsible: function (ev) {
+            var $toggle = $(ev.currentTarget);
+            var $collapsible = $toggle.parent();
+            $collapsible.toggleClass('collapsed');
         },
 
         formElementFocus: function (ev) {
