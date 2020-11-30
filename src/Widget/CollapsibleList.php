@@ -22,7 +22,7 @@ class CollapsibleList extends BaseHtmlElement
 
     protected $items = [];
 
-    public function __construct($items, $listAttributes = null)
+    public function __construct($items = [], $listAttributes = null)
     {
         if ($listAttributes !== null) {
             $this->defaultListAttributes = $listAttributes;
