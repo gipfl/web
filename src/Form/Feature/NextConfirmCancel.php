@@ -63,7 +63,7 @@ class NextConfirmCancel
      * @param array $found Internal parameter
      * @return BaseFormElement[]
      */
-    protected function pickFormElements(ValidHtml $html, $found = [])
+    protected function pickFormElements(ValidHtml $html, &$found = [])
     {
         if ($html instanceof BaseFormElement) {
             $found[] = $html;
@@ -84,8 +84,8 @@ class NextConfirmCancel
     public static function buttonNext($label, $attributes = [])
     {
         return new SubmitElement('next', $attributes + [
-                'label' => $label
-            ]);
+            'label' => $label
+        ]);
     }
 
     /**
@@ -96,8 +96,8 @@ class NextConfirmCancel
     public static function buttonConfirm($label, $attributes = [])
     {
         return new SubmitElement('submit', $attributes + [
-                'label' => $label
-            ]);
+            'label' => $label
+        ]);
     }
 
     /**
@@ -108,8 +108,8 @@ class NextConfirmCancel
     public static function buttonCancel($label, $attributes = [])
     {
         return new SubmitElement('cancel', $attributes + [
-                'label' => $label
-            ]);
+            'label' => $label
+        ]);
     }
 
     public function addToForm(Form $form)
