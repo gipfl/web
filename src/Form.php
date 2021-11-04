@@ -27,6 +27,10 @@ class Form extends iplForm
 
     protected $useFormName = true;
 
+    protected $defaultDecoratorClass = DdDtDecorator::class;
+
+    protected $formCssClasses = ['gipfl-form'];
+
     public function ensureAssembled()
     {
         if ($this->hasBeenAssembled === false) {
@@ -165,8 +169,10 @@ class Form extends iplForm
     protected function setupStyling()
     {
         $this->setSeparator("\n");
-        $this->addAttributes(['class' => 'gipfl-form']);
-        $this->setDefaultElementDecorator(new DdDtDecorator());
+        $this->addAttributes(['class' => $this->formCssClasses]);
+        if ($this->defaultDecoratorClass !== null) {
+            $this->setDefaultElementDecorator(new $this->defaultDecoratorClass);
+        }
     }
 
     protected function addCsrfElement()
