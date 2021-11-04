@@ -4,7 +4,7 @@ namespace gipfl\Web\Form\Feature;
 
 use ipl\Html\FormElement\SubmitElement;
 
-class ActionToggle
+trait ActionToggle
 {
     /** @var boolean|null */
     protected $hasBeenSubmitted;
