@@ -31,6 +31,9 @@ class Form extends iplForm
 
     protected $formCssClasses = ['gipfl-form'];
 
+    /** @var boolean|null */
+    protected $hasBeenSubmitted;
+
     public function ensureAssembled()
     {
         if ($this->hasBeenAssembled === false) {
@@ -44,6 +47,22 @@ class Form extends iplForm
         }
 
         return $this;
+    }
+
+    public function setSubmitted($submitted = true)
+    {
+        $this->hasBeenSubmitted = (bool) $submitted;
+
+        return $this;
+    }
+
+    public function hasBeenSubmitted()
+    {
+        if ($this->hasBeenSubmitted === null) {
+            return parent::hasBeenSubmitted();
+        } else {
+            return $this->hasBeenSubmitted;
+        }
     }
 
     public function disableCsrf()
