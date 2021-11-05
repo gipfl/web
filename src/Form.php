@@ -267,7 +267,7 @@ class Form extends iplForm
     public function hasBeenSent()
     {
         if (parent::hasBeenSent()) {
-            return $this->getSentValue($this->formNameElementName)
+            return !$this->useFormName  || $this->getSentValue($this->formNameElementName)
                 === $this->getUniqueFormName();
         } else {
             return false;
