@@ -49,7 +49,7 @@ class DdDtDecorator extends BaseHtmlElement implements DecoratorInterface
     {
         $element = $this->element;
         $label = $element->getLabel();
-        if (\strlen($label) === 0) {
+        if ($label === null || \strlen($label) === 0) {
             return null;
         }
 
@@ -83,7 +83,7 @@ class DdDtDecorator extends BaseHtmlElement implements DecoratorInterface
     {
         if ($this->element) {
             $description = $this->element->getDescription();
-            if (\strlen($description)) {
+            if ($description !== null && \strlen($description)) {
                 return Html::tag('p', ['class' => static::CSS_CLASS_DESCRIPTION], $description);
             }
         }
