@@ -40,13 +40,18 @@ class Form extends iplForm
             if ($this->getRequest() === null) {
                 throw new RuntimeException('Cannot assemble a WebForm without a Request');
             }
-            $this->addElementLoader(__NAMESPACE__ . '\\Form\\Element');
+            $this->registerGipflElementLoader();
             $this->setupStyling();
             parent::ensureAssembled();
             $this->prepareWebForm();
         }
 
         return $this;
+    }
+
+    protected function registerGipflElementLoader()
+    {
+        $this->addElementLoader(__NAMESPACE__ . '\\Form\\Element');
     }
 
     public function setSubmitted($submitted = true)
