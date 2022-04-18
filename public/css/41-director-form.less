@@ -73,6 +73,17 @@ form.gipfl-form {
     }
   }
 
+  input[type="text"],
+  input[type="password"],
+  input[type="number"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="time"],
+  textarea,
+  select {
+    background-color: @gipfl-bg-element;
+  }
+
   .errors label {
     color: @color-critical;
   }
@@ -107,7 +118,6 @@ form.gipfl-form {
   select {
     border: 1px solid #ddd;
     cursor: pointer;
-    background: @gipfl-bg-element;
   }
 
   input,
@@ -172,7 +182,6 @@ form.gipfl-form {
     border-width: 1px;
     border-radius: 3px;
     color: @text-color;
-    background-color: @gipfl-bg-element;
 
     &:hover {
       border-color: @gray;
@@ -195,7 +204,8 @@ form.gipfl-form {
   }
 
   input.search {
-    background: transparent url("../img/icons/search.png") no-repeat scroll 0.5em center / 1em 1em;
+    background-image: url("../img/icons/search.png");
+    background-repeat: no-repeat;
     padding-left: 2em;
   }
 
