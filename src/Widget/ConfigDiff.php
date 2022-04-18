@@ -6,6 +6,9 @@ use Diff;
 use ipl\Html\ValidHtml;
 use InvalidArgumentException;
 
+/**
+ * @deprecated - please use gipfl\Diff
+ */
 class ConfigDiff implements ValidHtml
 {
     protected $a;
