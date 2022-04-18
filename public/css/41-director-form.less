@@ -6,15 +6,8 @@ form.gipfl-form {
     margin: 0;
     padding: 0;
     &.active {
-      // pointing to active element:
-      dt label::after {
-        font-family: 'ifont';
-        // icon: right-big
-        content: '\e826';
-        margin-left: 1em;
-        padding-top: 0;
-        float: right;
-        color: @icinga-blue;
+      dt label {
+        text-decoration: underline;
       }
     }
   }
