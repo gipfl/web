@@ -11,7 +11,15 @@ class MultiSelect extends SelectElement
 
     public function __construct($name, $attributes = null)
     {
+        // Make sure we set  value last as it depends on options
+        if (isset($attributes['value'])) {
+            $value = $attributes['value'];
+            unset($attributes['value']);
+            $attributes['value'] = $value;
+        }
+
         parent::__construct($name, $attributes);
+
         $this->getAttributes()->add('multiple', true);
     }
 
@@ -70,17 +78,23 @@ class MultiSelect extends SelectElement
         }
     }
 
-    public function isValid()
+    public function validate()
     {
-        if ($this->valid === null) {
-            if ($this->isRequired() && empty($this->getValue())) {
-                return false;
-            }
-
-            $this->validate();
+        /**
+         * @TODO(lippserd): {@link SelectElement::validate()} doesn't work here because isset checks fail with
+         * illegal offset type errors since our value is an array. It would make sense to decouple the classes to
+         * avoid having to copy code from the base class.
+         * Also note that {@see setValue()} already performs most of the validation.
+         */
+        if ($this->isRequired() && empty($this->getValue())) {
+            $this->valid = false;
+        } else {
+            /**
+             * Copied from {@link \ipl\Html\BaseHtmlElement::validate()}.
+             */
+            $this->valid = $this->getValidators()->isValid($this->getValue());
+            $this->addMessages($this->getValidators()->getMessages());
         }
-
-        return $this->valid;
     }
 
     public function updateSelection()
