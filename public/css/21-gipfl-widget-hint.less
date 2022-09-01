@@ -3,15 +3,16 @@
  *
  * @since v0.6.0
  */
-p.gipfl-widget-hint {
+div.gipfl-widget-hint {
     border: 1px solid @text-color;
     padding: 0.5em;
     line-height: 2em;
     max-width: 60em;
     border-left-width: 3em;
     border-radius: 0.25em;
+    margin-bottom: 1em;
     background-color: @body-bg-color;
-    box-shadow: fade(@text-color, 15%) 1em 0 1.5em 0;
+    box-shadow: fade(@text-color, 30%) 1em 0 1.5em 0;
     &:before {
         position: relative;
         margin-left: -1.4em;
@@ -24,15 +25,19 @@ p.gipfl-widget-hint {
     }
     &.ok {
         border-color: @color-ok;
+        box-shadow: fade(@color-ok, 30%) 1em 0 1.5em 0;
     }
     &.info {
         border-color: @color-pending;
+        box-shadow: fade(@color-pending, 30%) 1em 0 1.5em 0;
     }
     &.warning {
         border-color: @color-warning;
+        box-shadow: fade(@color-warning, 30%) 1em 0 1.5em 0;
     }
     &.error {
         border-color: @color-critical;
+        box-shadow: fade(@color-critical, 30%) 1em 0 1.5em 0;
     }
     &.critical:before, &.error:before {
         content: '\e881';

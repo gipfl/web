@@ -7,7 +7,7 @@ use ipl\Html\Html;
 
 class Hint extends BaseHtmlElement
 {
-    protected $tag = 'p';
+    protected $tag = 'div';
 
     protected $defaultAttributes = [
         'class' => 'gipfl-widget-hint'
