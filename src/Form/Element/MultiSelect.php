@@ -3,6 +3,7 @@
 namespace gipfl\Web\Form\Element;
 
 use ipl\Html\Attributes;
+use ipl\Html\FormElement\BaseFormElement;
 use ipl\Html\FormElement\SelectElement;
 
 class MultiSelect extends SelectElement
@@ -60,7 +61,6 @@ class MultiSelect extends SelectElement
         }
 
         $this->value = $values;
-        $this->valid = null;
         $this->updateSelection();
 
         return $this;
@@ -68,7 +68,6 @@ class MultiSelect extends SelectElement
 
     protected function failForValues($values)
     {
-        $this->valid = false;
         if (count($values) === 1) {
             $value = array_shift($values);
             $this->addMessage("'$value' is not allowed here");
@@ -87,14 +86,10 @@ class MultiSelect extends SelectElement
          * Also note that {@see setValue()} already performs most of the validation.
          */
         if ($this->isRequired() && empty($this->getValue())) {
-            $this->valid = false;
-        } else {
-            /**
-             * Copied from {@link \ipl\Html\BaseHtmlElement::validate()}.
-             */
-            $this->valid = $this->getValidators()->isValid($this->getValue());
-            $this->addMessages($this->getValidators()->getMessages());
+            return false;
         }
+
+        return BaseFormElement::validate();
     }
 
     public function updateSelection()
