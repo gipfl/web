@@ -201,8 +201,9 @@ class Form extends iplForm
 
     protected function addCsrfElement()
     {
-        $element = new HiddenElement('__CSRF__', [
-            'ignore' => true,
+        $element = new HiddenElement('__FORM_CSRF', [
+            'ignore'   => true,
+            'required' => true,
         ]);
         $element->setValidators([
             new PhpSessionBasedCsrfTokenValidator()
@@ -210,11 +211,7 @@ class Form extends iplForm
         // prepend / register -> avoid decorator
         $this->prepend($element);
         $this->registerElement($element);
-        if ($this->hasBeenSent()) {
-            if (! $element->isValid()) {
-                $element->setValue(PhpSessionBasedCsrfTokenValidator::generateCsrfValue());
-            }
-        } else {
+        if (! $this->hasBeenSent()) {
             $element->setValue(PhpSessionBasedCsrfTokenValidator::generateCsrfValue());
         }
     }
