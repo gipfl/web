@@ -1,5 +1,5 @@
 {
-    "name": "gipfl/web",
+    "name": "icinga/gipfl-web",
     "description": "Various web widgets",
     "type": "library",
     "license": "MIT",
@@ -16,6 +16,9 @@
         "psr-4": {
             "gipfl\\Web\\": "src"
         }
+    },
+    "replace": {
+        "gipfl/web": "*"
     },
     "require": {
         "php": ">=5.6.0",
