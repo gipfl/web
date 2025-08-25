@@ -3,6 +3,7 @@
 namespace gipfl\Web\Form\Decorator;
 
 use gipfl\Web\HtmlHelper;
+use ipl\Html\Attributes;
 use ipl\Html\BaseHtmlElement;
 use ipl\Html\FormDecorator\DecoratorInterface;
 use ipl\Html\FormElement\BaseFormElement;
@@ -67,7 +68,7 @@ class DdDtDecorator extends BaseHtmlElement implements DecoratorInterface
         return Html::tag('label', $attributes, $label);
     }
 
-    public function getAttributes()
+    public function getAttributes(): Attributes
     {
         $attributes = parent::getAttributes();
 
